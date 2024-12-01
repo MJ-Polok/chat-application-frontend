@@ -13,13 +13,13 @@ const Signup = () => {
         gender: ""
     })
 
-    const {loading, signup} = useSignup()
+    const { loading, signup } = useSignup()
 
     const handleCheckboxChange = (gender) => {
         setFormData({ ...formData, gender })
     }
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         await signup(formData)
@@ -71,7 +71,9 @@ const Signup = () => {
                     </Link>
 
                     <div>
-                        <button className="btn btn-block btn-sm mt-2 bg-blue-700 font-bol1d text-white">Sing Up</button>
+                        <button className="btn btn-block btn-sm mt-2 bg-blue-700 font-bol1d text-white" disabled={loading}>
+                            {loading ? (<span className="loading loading-spinner"></span>) : "Sing Up"}
+                        </button>
                     </div>
                 </form>
             </div>
